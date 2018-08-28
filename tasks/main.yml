@@ -38,12 +38,12 @@
   template:
     src: logrotate.j2
     dest: /etc/logrotate.d/{{ item.name }}
-  with_items: daily_scripts
+  with_items: "{{ daily_scripts }}"
   when: daily_scripts is defined
 
 - name: Setup logrotate.hourly.d scripts
   template:
     src: logrotate.j2
     dest: /etc/logrotate.hourly.d/{{ item.name }}
-  with_items: hourly_scripts
+  with_items: "{{ hourly_scripts }}"
   when: hourly_scripts is defined
